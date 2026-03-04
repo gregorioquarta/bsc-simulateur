@@ -31,7 +31,6 @@
         #save-indicator { transition: opacity 0.3s; opacity: 0; }
         #save-indicator.visible { opacity: 1; }
 
-        /* Couleurs de marge */
         .badge-margin { padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7rem; }
         .margin-high { background-color: #dcfce7; color: #166534; }
         .margin-medium { background-color: #fef3c7; color: #92400e; }
@@ -213,25 +212,20 @@
     </div>
 
     <script>
-        // DONNÉES PAR DÉFAUT
         const DEFAULT_PRODUCTS = [
-            // BOX À EMPORTER
-            { cat: 'BOX (À EMPORTER)', id: 'b1', name: 'Bulle de Lecture', desc: 'Livre poche + 2 sachets thé + marque page', purchase: 7.00, sale: 15.00, tva: 12, qty: 2 },
-            { cat: 'BOX (À EMPORTER)', id: 'b2', name: 'Cosy Morning', desc: 'Livre broché + Bougie + marque page', purchase: 19, sale: 36.00, tva: 12, qty: 1 },
-            { cat: 'BOX (À EMPORTER)', id: 'b3', name: 'La Retraite', desc: 'Livre collector + 100gr Thé Premium + accessoire', purchase: 39.00, sale: 65.00, tva: 14, qty: 0.5 },
-            
-            // COMBOS SUR PLACE
-            { cat: 'COMBOS (SUR PLACE)', id: 'c1', name: 'L\'Instant Poche', desc: 'Livre de poche + Boisson chaude', purchase: 6.00, sale: 12, tva: 12, qty: 3 },
+            { cat: 'BOX (À EMPORTER)', id: 'b1', name: 'Bulle de Lecture', desc: 'Livre poche + 2 sachets thé + marque page', purchase: 7.00, sale: 15.00, tva: 12, qty: 0.3 },
+            { cat: 'BOX (À EMPORTER)', id: 'b2', name: 'Cosy Morning', desc: 'Livre broché + Bougie + marque page', purchase: 19, sale: 36.00, tva: 12, qty: 0.2 },
+            { cat: 'BOX (À EMPORTER)', id: 'b3', name: 'La Retraite', desc: 'Livre collector + 100gr Thé Premium + accessoire', purchase: 39.00, sale: 65.00, tva: 14, qty: 0.1 },
+            { cat: 'COMBOS (SUR PLACE)', id: 'c1', name: 'L\'Instant Poche', desc: 'Livre de poche + Boisson chaude', purchase: 6.00, sale: 12, tva: 12, qty: 3.5 },
             { cat: 'COMBOS (SUR PLACE)', id: 'c2', name: 'Le Goûter Poche', desc: 'Livre de poche + Boisson + Pâtisserie', purchase: 6.40, sale: 16, tva: 10, qty: 2 },
-            { cat: 'COMBOS (SUR PLACE)', id: 'c3', name: 'L\'Instant Broché grand format', desc: 'Livre broché + Boisson', purchase: 14.00, sale: 25.00, tva: 10, qty: 1 },
-            { cat: 'COMBOS (SUR PLACE)', id: 'c4', name: 'Le Goûter Broché grand format', desc: 'Livre broché + Boisson + Pâtisserie', purchase: 14.60, sale: 29.50, tva: 9, qty: 1 },
-            { cat: 'COMBOS (SUR PLACE)', id: 'c5', name: 'La Pause Gourmande', desc: 'Boisson + Pâtisserie (sans livre)', purchase: 0.9, sale: 7.50, tva: 21, qty: 10 },
-            
-            // UNITÉS
-            { cat: 'LIVRES UNITÉ', id: 'u1', name: 'Livre de Poche seul', desc: 'Standard', purchase: 5.50, sale: 10.00, tva: 6, qty: 7 },
-            { cat: 'LIVRES UNITÉ', id: 'u2', name: 'Livre Broché seul', desc: 'Nouveautés', purchase: 13.50, sale: 26.00, tva: 6, qty: 5 },
-            { cat: 'SALON UNITÉ', id: 'u3', name: 'Boisson seule', desc: 'Café / Thé', purchase: 0.50, sale: 4.50, tva: 21, qty: 10 },
-            { cat: 'SALON UNITÉ', id: 'u4', name: 'Pâtisserie seule', desc: 'Artisanal', purchase: 0.4, sale: 4.00, tva: 6, qty: 6 }
+            { cat: 'COMBOS (SUR PLACE)', id: 'c3', name: 'L\'Instant Broché grand format', desc: 'Livre broché + Boisson', purchase: 14.00, sale: 25.00, tva: 10, qty: 1.5 },
+            { cat: 'COMBOS (SUR PLACE)', id: 'c4', name: 'Le Goûter Broché grand format', desc: 'Livre broché + Boisson + Pâtisserie', purchase: 14.60, sale: 29.50, tva: 9, qty: 0.3 },
+            { cat: 'COMBOS (SUR PLACE)', id: 'c5', name: 'La Pause Gourmande', desc: 'Boisson + Pâtisserie (sans livre)', purchase: 0.9, sale: 7.50, tva: 21, qty: 5 },
+            { cat: 'LIVRES UNITÉ', id: 'u1', name: 'Livre de Poche seul', desc: 'Standard', purchase: 5.50, sale: 10.00, tva: 6, qty: 8 },
+            { cat: 'LIVRES UNITÉ', id: 'u2', name: 'Livre Broché seul', desc: 'Nouveautés', purchase: 13.50, sale: 26.00, tva: 6, qty: 6 },
+            { cat: 'LIVRES UNITÉ', id: 'u5', name: 'Livre Relié / Collector', desc: 'Edition spéciale', purchase: 25, sale: 38.00, tva: 6, qty: 0.2 },
+            { cat: 'SALON UNITÉ', id: 'u3', name: 'Boisson seule', desc: 'Café / Thé', purchase: 0.50, sale: 4.00, tva: 21, qty: 6 },
+            { cat: 'SALON UNITÉ', id: 'u4', name: 'Pâtisserie seule', desc: 'Artisanal', purchase: 0.4, sale: 4.00, tva: 6, qty: 4 }
         ];
 
         const DEFAULT_EXPENSES = {
@@ -248,30 +242,26 @@
         let expenses = {};
 
         function initData() {
-            const storedProducts = localStorage.getItem('gc_products');
-            const storedExpenses = localStorage.getItem('gc_expenses');
-
+            const storedProducts = localStorage.getItem('gc_v4_products');
+            const storedExpenses = localStorage.getItem('gc_v4_expenses');
             products = storedProducts ? JSON.parse(storedProducts) : [...DEFAULT_PRODUCTS];
             expenses = storedExpenses ? JSON.parse(storedExpenses) : {...DEFAULT_EXPENSES};
-
             document.getElementById('daysOpen').value = expenses.daysOpen;
             document.getElementById('tremplinToggle').checked = expenses.isTremplin;
-            
             renderExpensesList();
             renderUI();
         }
 
         function saveData() {
-            localStorage.setItem('gc_products', JSON.stringify(products));
-            localStorage.setItem('gc_expenses', JSON.stringify(expenses));
-            
+            localStorage.setItem('gc_v4_products', JSON.stringify(products));
+            localStorage.setItem('gc_v4_expenses', JSON.stringify(expenses));
             const indicator = document.getElementById('save-indicator');
             indicator.classList.add('visible');
             setTimeout(() => indicator.classList.remove('visible'), 1000);
         }
 
         function resetToDefault() {
-            if(confirm("Voulez-vous réinitialiser toutes les données ? Cette action est irréversible.")) {
+            if(confirm("Réinitialiser les données ?")) {
                 localStorage.clear();
                 initData();
             }
@@ -293,12 +283,18 @@
             return { marginHT, marginPercent };
         }
 
+        // CORRECTION MAJEURE : On cible l'élément exact par son ID unique
         function updateProduct(id, field, value) {
             const index = products.findIndex(p => p.id === id);
             if (index !== -1) {
-                products[index][field] = (typeof products[index][field] === 'string') ? value : (parseFloat(value) || 0);
+                if (field === 'name' || field === 'desc') {
+                    products[index][field] = value;
+                } else {
+                    products[index][field] = parseFloat(value) || 0;
+                }
                 saveAndCalc();
-                if (field !== 'qty') renderUI(); // Éviter de tout redessiner quand on change juste la quantité dans le simulateur
+                // On ne redessine tout le catalogue que si on n'est pas en train de changer une quantité
+                if (field !== 'qty') renderUI();
             }
         }
 
@@ -331,7 +327,6 @@
                 { id: 'salary', label: 'Salaire Net Souhaité', sub: 'Rémunération gérante', val: expenses.salary, special: true },
                 { id: 'taxes', label: 'Cotisations & Fiscalité', sub: 'Taxes professionnelles', val: expenses.taxes }
             ];
-
             list.innerHTML = items.map(item => `
                 <div id="row-${item.id}" class="flex justify-between items-center p-3 ${item.special ? 'bg-amber-50 border-l-4 border-amber-400' : 'bg-stone-50'} rounded-lg">
                     <div class="flex-1">
@@ -347,21 +342,19 @@
         }
 
         function renderUI() {
-            // Vue Catalogue
             const catalogRows = document.getElementById('catalog-rows');
             if (!document.getElementById('view-catalog').classList.contains('hidden')) {
                 catalogRows.innerHTML = "";
                 let currentCat = "";
-                products.forEach(p => {
+                // Tri par catégorie pour affichage groupé
+                const sorted = [...products].sort((a,b) => a.cat.localeCompare(b.cat));
+                sorted.forEach(p => {
                     if (p.cat !== currentCat) {
                         currentCat = p.cat;
                         catalogRows.innerHTML += `<tr><td colspan="7" class="bg-stone-100 p-2 font-bold text-stone-500 text-[10px] uppercase tracking-widest border-y border-stone-200">${p.cat}</td></tr>`;
                     }
                     const { marginHT, marginPercent } = calculateProductMargin(p);
-                    
-                    let marginColorClass = "margin-low";
-                    if(marginPercent > 50) marginColorClass = "margin-high";
-                    else if(marginPercent >= 30) marginColorClass = "margin-medium";
+                    let color = marginPercent > 50 ? 'margin-high' : (marginPercent >= 30 ? 'margin-medium' : 'margin-low');
 
                     catalogRows.innerHTML += `
                         <tr class="border-b border-stone-100 hover:bg-stone-50 transition-colors">
@@ -373,21 +366,16 @@
                             <td class="p-3 text-center"><input type="number" step="0.1" value="${p.sale}" onchange="updateProduct('${p.id}', 'sale', this.value)" class="input-table font-bold"></td>
                             <td class="p-3 text-center"><input type="number" step="1" value="${p.tva}" onchange="updateProduct('${p.id}', 'tva', this.value)" class="input-table text-stone-500"></td>
                             <td class="p-3 text-center font-semibold text-stone-600">${marginHT.toFixed(2)}€</td>
-                            <td class="p-3 text-center">
-                                <span class="badge-margin ${marginColorClass}">${marginPercent.toFixed(0)}%</span>
-                            </td>
-                            <td class="p-3 text-right">
-                                <button onclick="deleteProduct('${p.id}')" class="text-stone-300 hover:text-red-500 transition-colors">✕</button>
-                            </td>
+                            <td class="p-3 text-center"><span class="badge-margin ${color}">${marginPercent.toFixed(0)}%</span></td>
+                            <td class="p-3 text-right"><button onclick="deleteProduct('${p.id}')" class="text-stone-300 hover:text-red-500 transition-colors">✕</button></td>
                         </tr>`;
                 });
             }
 
-            // Vue Simulateur
             const sections = document.getElementById('sales-sections');
             if (!document.getElementById('view-simulator').classList.contains('hidden')) {
                 sections.innerHTML = "";
-                let cats = [...new Set(products.map(p => p.cat))];
+                let cats = [...new Set(products.map(p => p.cat))].sort();
                 cats.forEach(cat => {
                     let html = `<h3 class="text-xs font-black text-stone-400 uppercase tracking-widest mb-3 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-400"></span> ${cat}</h3><div class="grid md:grid-cols-2 gap-4">`;
                     products.filter(p => p.cat === cat).forEach(p => {
@@ -398,7 +386,7 @@
                                 <p class="text-[10px] text-stone-400 italic">${p.desc}</p>
                             </div>
                             <div class="flex items-center gap-2">
-                                <input type="number" value="${p.qty}" step="1" oninput="updateProduct('${p.id}', 'qty', this.value)" class="w-16 h-10 text-center font-bold bg-amber-50 border-amber-200 text-amber-900 rounded-lg">
+                                <input type="number" value="${p.qty}" step="0.1" oninput="updateProduct('${p.id}', 'qty', this.value)" class="w-16 h-10 text-center font-bold bg-amber-50 border-amber-200 text-amber-900 rounded-lg">
                                 <span class="text-[10px] font-bold text-stone-400 uppercase">/jr</span>
                             </div>
                         </div>`;
@@ -414,34 +402,25 @@
             const finalSalary = isTremplin ? 0 : (expenses.salary || 0);
             const totalExp = (expenses.rent || 0) + (expenses.utilities || 0) + (expenses.admin || 0) + finalSalary + (expenses.taxes || 0);
             const days = expenses.daysOpen || 26;
-
             const salaryRow = document.getElementById('row-salary');
             const salarySub = document.getElementById('sub-salary');
             if (salaryRow) {
                 salaryRow.style.opacity = isTremplin ? "0.4" : "1";
                 salarySub.innerHTML = isTremplin ? "<span class='text-amber-600 font-bold'>OFF (MODE TREMPLIN)</span>" : "Rémunération gérante";
             }
-
             document.getElementById('totalExpenses').innerText = totalExp.toLocaleString('fr-FR') + " €";
             document.getElementById('marginPerDay').innerText = (totalExp / days).toFixed(2) + " €";
             document.getElementById('marginPerDayAlt').innerText = (totalExp / days).toFixed(2) + " €";
             document.getElementById('caRequired').innerText = ((totalExp / 0.55) * 1.10).toLocaleString('fr-FR', {maximumFractionDigits:0}) + " €"; 
             document.getElementById('targetSpan').innerText = totalExp.toLocaleString('fr-FR') + " €";
-            
             let totalMonthlyMargin = 0;
-            products.forEach(p => {
-                totalMonthlyMargin += (calculateProductMargin(p).marginHT * (p.qty || 0) * days);
-            });
-
+            products.forEach(p => { totalMonthlyMargin += (calculateProductMargin(p).marginHT * (p.qty || 0) * days); });
             document.getElementById('totalMargin').innerText = totalMonthlyMargin.toLocaleString('fr-FR', { minimumFractionDigits: 2 }) + " €";
             document.getElementById('displayTarget').innerText = totalExp.toLocaleString('fr-FR') + " €";
-            
             const pct = Math.min(100, (totalMonthlyMargin / totalExp) * 100);
             const bar = document.getElementById('progressBar');
             if(bar) bar.style.width = pct + "%";
-
             document.getElementById('salesSpan').innerText = Math.ceil((totalExp / days) / 9.60);
-
             const statusBox = document.getElementById('statusBox');
             const statusMsg = document.getElementById('statusMessage');
             if(statusBox) {
@@ -462,13 +441,10 @@
             const purchase = parseFloat(document.getElementById('new-purchase').value) || 0;
             const sale = parseFloat(document.getElementById('new-sale').value) || 0;
             const tva = parseFloat(document.getElementById('new-tva').value) || 6;
-            
             if (!name) return;
-            
             products.push({ cat, id: 'id-' + Date.now(), name, desc, purchase, sale, tva, qty: 0 });
             document.getElementById('new-name').value = "";
             document.getElementById('new-desc').value = "";
-            
             renderUI();
             saveData();
         }
